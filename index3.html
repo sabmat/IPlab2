@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea id="input" placeholder="Enter text with yyyy/mm/dd dates"></textarea>
+    <button id="convertButton">Convert Dates</button>
+    <div id="output"></div> 
+    <script>
+        
+function convertDates(inputText) {
+  // Використовуємо регулярний вираз для пошуку дат у форматі yyyy/mm/dd
+  const regex = /(\d{4})\/(\d{2})\/(\d{2})/g;
+
+  // Замінюємо дати на формат dd.mm.yyyy
+  const convertedText = inputText.replace(regex, "$3.$2.$1");
+
+  return convertedText;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const inputElement = document.getElementById('input');
+  const convertButton = document.getElementById('convertButton');
+  const outputElement = document.getElementById('output');
+
+  convertButton.addEventListener("click", function() {
+      const inputText = inputElement.value;
+      const convertedText = convertDates(inputText);
+      outputElement.innerHTML = `<p>${convertedText}</p>`;
+  });
+});
+
+    </script>
+</body>
+</html>
